@@ -1,6 +1,6 @@
 import {View,Image,StyleSheet} from 'react-native';
 import Text from './Text';
-
+import theme from '../src/theme';
 const styles = StyleSheet.create({
   container:{
     flex: 1,
@@ -26,9 +26,19 @@ const styles = StyleSheet.create({
     textAlign:'center',
   },
   
+  language:{
+    flex:1,
+    backgroundColor: theme.colors.primary,
+    padding:5,
+    width: 'max-content',
+    borderRadius: 10,
+    margin:'auto',
+  },
+
   tinyLogo: {
     width: 50,
     height: 50,
+    borderRadius: 10,
   },
   
 });
@@ -37,19 +47,20 @@ RepositoryItem = (item) =>{
     return(
         <View style={styles.container}>
             <View style={styles.info}>
-            <Image
-                style={styles.tinyLogo}
-                source={{
-                uri: item.item.ownerAvatarUrl,
-                }}
-            />
-            <View style={styles.detail1}>
-                <Text fontWeight='bold'>{item.item.fullName}</Text>
-                <Text>{item.item.description}</Text>
-                <Text>{item.item.language}</Text>
+                <Image
+                    style={styles.tinyLogo}
+                    source={{
+                    uri: item.item.ownerAvatarUrl,
+                    }}
+                />
+                <View style={styles.detail1}>
+                    <Text fontWeight='bold'>{item.item.fullName}</Text>
+                    <Text >{item.item.description}</Text>
+                    <Text style={styles.language} color='onDark'>{item.item.language}</Text>
+                    
+                </View>
             </View>
-            
-            </View>
+
             <View style={styles.info}>
                 <View style={styles.detail2}>
                     <Text fontWeight='bold'>{item.item.stargazersCount}</Text>
