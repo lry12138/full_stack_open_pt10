@@ -8,31 +8,29 @@ const styles = StyleSheet.create({
   },
 
   info:{
-    flex:1,
+    direction:'flex',
     flexDirection: 'row',
     padding:10,
   },
 
-  detail1:{
-    flex:1,
+  detail:{
+    flexShrink:1,
     paddingLeft:10,
+    alignItems:'flex-start',
   },
 
-  detail2:{
-    flex:1,
+  stats:{
     paddingLeft:10,
     justifyContent: 'center', 
     alignItems: 'center',
     textAlign:'center',
+    margin:'auto',
   },
   
   language:{
-    flex:1,
     backgroundColor: theme.colors.primary,
     padding:5,
-    width: 'max-content',
     borderRadius: 10,
-    margin:'auto',
   },
 
   tinyLogo: {
@@ -53,28 +51,28 @@ RepositoryItem = (item) =>{
                     uri: item.item.ownerAvatarUrl,
                     }}
                 />
-                <View style={styles.detail1}>
+
+                <View style={styles.detail}>
                     <Text fontWeight='bold'>{item.item.fullName}</Text>
-                    <Text >{item.item.description}</Text>
+                    <Text>{item.item.description}</Text>
                     <Text style={styles.language} color='onDark'>{item.item.language}</Text>
-                    
                 </View>
             </View>
 
             <View style={styles.info}>
-                <View style={styles.detail2}>
+                <View style={styles.stats}>
                     <Text fontWeight='bold'>{item.item.stargazersCount}</Text>
                     <Text>Stars</Text>
                 </View>
-                <View style={styles.detail2}>
+                <View style={styles.stats}>
                     <Text fontWeight='bold'>{item.item.forksCount}</Text>
                     <Text>Forks</Text>
                 </View>
-                <View style={styles.detail2}>
+                <View style={styles.stats}>
                     <Text fontWeight='bold'>{item.item.reviewCount}</Text>
                     <Text>Reviews</Text>
                 </View>
-                <View style={styles.detail2}>
+                <View style={styles.stats}>
                     <Text fontWeight='bold'>{item.item.ratingAverage}</Text>
                     <Text>Rating</Text>
                 </View>
