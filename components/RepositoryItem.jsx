@@ -41,40 +41,47 @@ const styles = StyleSheet.create({
   
 });
 
-RepositoryItem = (item) =>{
+const NumFormat = ({num}) =>{
+  return (                    
+  <Text fontWeight='bold'>
+    {(num>=100)?Intl.NumberFormat('en-us',{minimumFractionDigits: 1,maximumFractionDigits: 1,notation: "compact",}).format(num):num}
+  </Text>);
+}
+
+RepositoryItem = ({item}) =>{
     return(
         <View style={styles.container}>
             <View style={styles.info}>
                 <Image
                     style={styles.tinyLogo}
                     source={{
-                    uri: item.item.ownerAvatarUrl,
+                    uri: item.ownerAvatarUrl,
                     }}
                 />
 
                 <View style={styles.detail}>
-                    <Text fontWeight='bold'>{item.item.fullName}</Text>
-                    <Text>{item.item.description}</Text>
-                    <Text style={styles.language} color='onDark'>{item.item.language}</Text>
+                    <Text fontWeight='bold'>{item.fullName}</Text>
+                    <Text>{item.description}</Text>
+                    <Text style={styles.language} color='onDark'>{item.language}</Text>
                 </View>
             </View>
 
             <View style={styles.info}>
                 <View style={styles.stats}>
-                    <Text fontWeight='bold'>{item.item.stargazersCount}</Text>
+                    <NumFormat num = {item.stargazersCount}/>
                     <Text>Stars</Text>
                 </View>
                 <View style={styles.stats}>
-                    <Text fontWeight='bold'>{item.item.forksCount}</Text>
-                    <Text>Forks</Text>
+                  <NumFormat num = {item.forksCount}/>
+                  <Text>Forks</Text>
                 </View>
                 <View style={styles.stats}>
-                    <Text fontWeight='bold'>{item.item.reviewCount}</Text>
-                    <Text>Reviews</Text>
+                  <NumFormat num = {item.reviewCount}/>
+                  <Text>Reviews</Text>
                 </View>
                 <View style={styles.stats}>
-                    <Text fontWeight='bold'>{item.item.ratingAverage}</Text>
-                    <Text>Rating</Text>
+                  <NumFormat num = {item.ratingAverage}/>
+                  <Text>Rating</Text>
                 </View>
                 
             </View>
